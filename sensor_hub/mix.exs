@@ -34,7 +34,10 @@ defmodule SensorHub.MixProject do
       {:shoehorn, "~> 0.9.1"},
       {:ring_logger, "~> 0.9.0"},
       {:toolshed, "~> 0.3.0"},
-      {:tsl2561, git: "https://github.com/NervesJP/sensor_hub_poncho.git", subdir: "tsl2561", targets: @all_targets},
+      {:tsl2561,
+       git: "https://github.com/NervesJP/sensor_hub_poncho.git",
+       subdir: "tsl2561",
+       targets: @all_targets},
 
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.13.0", targets: @all_targets},
