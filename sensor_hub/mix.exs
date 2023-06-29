@@ -38,6 +38,8 @@ defmodule SensorHub.MixProject do
        git: "https://github.com/NervesJP/sensor_hub_poncho.git",
        subdir: "tsl2561",
        targets: @all_targets},
+      {:sgp30, "~> 0.2.0", targets: @all_targets},
+      {:bmp280, "~> 0.2.5", targets: @all_targets},
 
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.13.0", targets: @all_targets},
