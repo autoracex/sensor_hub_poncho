@@ -6,6 +6,7 @@ defmodule WeatherTracker.WeatherConditions.WeatherCondition do
     :altitude_m,
     :pressure_pa,
     :temperature_c,
+    :humidity_rh,
     :co2_eq_ppm,
     :tvoc_ppb,
     :light_lux
@@ -19,6 +20,7 @@ defmodule WeatherTracker.WeatherConditions.WeatherCondition do
     field :altitude_m, :decimal
     field :pressure_pa, :decimal
     field :temperature_c, :decimal
+    field :humidity_rh, :decimal
     field :co2_eq_ppm, :decimal
     field :tvoc_ppb, :decimal
     field :light_lux, :decimal
