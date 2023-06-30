@@ -18,10 +18,26 @@ defmodule SensorHub.Application do
         # {SensorHub.Worker, arg},
         {SGP30, []},
         {BMP280, [bus_name: "i2c-1", bus_address: 0x76, name: BMP280]},
-        {Tsl2561, %{i2c_bus_name: "i2c-1", address: 0x29}}
+        {Tsl2561, %{i2c_bus_name: "i2c-1", address: 0x29}},
+        {Finch, name: WeatherTrackerClient},
+        {
+          Publisher,
+          %{
+            sensors: sensors(),
+            weather_tracker_url: weather_tracker_url()
+          }
+        }
       ] ++ children(target())
 
     Supervisor.start_link(children, opts)
+  end
+
+  defp sensors do
+    [Sensor.new(BMP280), Sensor.new(Tsl2561), Sensor.new(SGP30)]
+  end
+
+  defp weather_tracker_url do
+    Application.get_env(:sensor_hub, :weather_tracker_url)
   end
 
   # List all child processes to be supervised
