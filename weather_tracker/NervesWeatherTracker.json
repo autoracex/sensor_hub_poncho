@@ -365,8 +365,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 8,
+        "h": 8,
+        "w": 6,
         "x": 0,
         "y": 5
       },
@@ -425,6 +425,94 @@
             "mode": "thresholds"
           },
           "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-blue",
+                "value": null
+              },
+              {
+                "color": "purple",
+                "value": 0
+              },
+              {
+                "color": "dark-green",
+                "value": 40
+              },
+              {
+                "color": "red",
+                "value": 60
+              }
+            ]
+          },
+          "unit": "humidity"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 6,
+        "y": 5
+      },
+      "id": 25,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^humidity_rh$/",
+          "values": false
+        },
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "8.0.5",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  \"timestamp\" AS \"time\",\n  humidity_rh\nFROM weather_conditions\nWHERE\n  $__timeFilter(\"timestamp\")\nORDER BY 1",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "humidity_rh"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "weather_conditions",
+          "timeColumn": "\"timestamp\"",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Humidity",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
           "max": 3000,
           "min": 0,
           "thresholds": {
@@ -453,9 +541,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 8,
-        "x": 8,
+        "h": 8,
+        "w": 6,
+        "x": 12,
         "y": 5
       },
       "id": 17,
@@ -537,9 +625,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 8,
-        "x": 16,
+        "h": 8,
+        "w": 6,
+        "x": 18,
         "y": 5
       },
       "id": 18,
@@ -596,7 +684,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 14
+        "y": 13
       },
       "id": 16,
       "panels": [],
@@ -660,7 +748,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 15
+        "y": 14
       },
       "id": 2,
       "options": {
@@ -758,7 +846,7 @@
               }
             ]
           },
-          "unit": "ppm"
+          "unit": "humidity"
         },
         "overrides": []
       },
@@ -766,7 +854,113 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 15
+        "y": 14
+      },
+      "id": 26,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.0.5",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  \"timestamp\" AS \"time\",\n  humidity_rh\nFROM weather_conditions\nWHERE\n  $__timeFilter(\"timestamp\")\nORDER BY 1",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "humidity_rh"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "weather_conditions",
+          "timeColumn": "\"timestamp\"",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Humidity",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ppm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 23
       },
       "id": 8,
       "options": {
@@ -871,8 +1065,8 @@
       "gridPos": {
         "h": 9,
         "w": 12,
-        "x": 0,
-        "y": 24
+        "x": 12,
+        "y": 23
       },
       "id": 6,
       "options": {
