@@ -11,7 +11,7 @@ defmodule SensorHub.Sensor do
   end
 
   def fields(SGP30), do: [:co2_eq_ppm, :tvoc_ppb]
-  def fields(BMP280), do: [:altitude_m, :pressure_pa, :temperature_c]
+  def fields(BMP280), do: [:altitude_m, :pressure_pa, :temperature_c, :humidity_rh]
   def fields(Tsl2561), do: [:light_lux]
 
   def read_fn(SGP30), do: fn -> SGP30.state() end
@@ -28,7 +28,7 @@ defmodule SensorHub.Sensor do
     fn reading ->
       case reading do
         {:ok, measurement} ->
-          Map.take(measurement, [:altitude_m, :pressure_pa, :temperature_c])
+          Map.take(measurement, [:altitude_m, :pressure_pa, :temperature_c, :humidity_rh])
 
         _ ->
           %{}
