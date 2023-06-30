@@ -106,3 +106,7 @@ config :mdns_lite,
 # Uncomment to use target specific configurations
 
 # import_config "#{Mix.target()}.exs"
+
+config :sensor_hub,
+       :weather_tracker_url,
+       "http://#{System.get_env("WEATHER_TRACKER_SERVER_IP_ADDRESS")}:4000/api/weather-conditions"
