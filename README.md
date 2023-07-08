@@ -70,9 +70,17 @@ mix setup
 mix phx.server
 ```
 
+## Grafana
+
 Visit: http://localhost:3000
 
 username, passwordの初期値はともに`admin`です。  
+
+Configuration > Data Sources > Add data source で「PostgreSQL」をselectする。  
+下図のような設定をして「Save & test」(青)ボタンを押します。  
+
+![](images/grafana-ds-postgres-config.png)
+
 左端のメニュー「+」で「Import」を選び、`weather_tracker/NervesWeatherTracker.json`を選択してインポートします。  
 そうすると以下のようなど派手なダッシュボードが表示されます。
 
